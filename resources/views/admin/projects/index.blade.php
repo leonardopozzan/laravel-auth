@@ -1,6 +1,12 @@
 @extends('layouts.admin')
 @section('content')
+
     <div class="projects-list">
+        @if(session()->has('message'))
+    <div class="alert alert-success mb-3 mt-3">
+        {{ session()->get('message') }}
+    </div>
+    @endif
         <table class="w-100">
             <thead>
                 <tr>

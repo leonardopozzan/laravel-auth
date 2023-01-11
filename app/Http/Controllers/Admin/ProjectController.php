@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Auth\Events\Validated;
@@ -50,7 +51,6 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-
         return view('admin.projects.show', compact('project'));
     }
 
@@ -59,9 +59,9 @@ class ProjectController extends Controller
      *
      * @param  int  $id
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        return view('admin.projects.edit');
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -70,9 +70,13 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+        $data = $request->validated();
+        $slug = Project::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $project->update($data);
+        return redirect()->route('admin.projects.index')->with('message', "$project->name updated successfully");
     }
 
     /**
@@ -80,8 +84,10 @@ class ProjectController extends Controller
      *
      * @param  int  $id
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $deleted = $project->name;
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('message', "$deleted deleted successfully");
     }
 }

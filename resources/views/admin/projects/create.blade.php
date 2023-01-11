@@ -13,7 +13,7 @@
             </div>
             <div>
                 <label for="dev_lang">Linguaggi di programmazione usati</label>
-                <input type="text" class="form-control @error('dev_lang') is-invalid @enderror" name="dev_lang" id="dev_lang" required maxlength="240">
+                <input type="text" class="form-control @error('dev_lang') is-invalid @enderror" name="dev_lang" id="dev_lang"  maxlength="240">
                 @error('dev_lang')
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror

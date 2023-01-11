@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
-class StoreProjectRequest extends FormRequest
+use Illuminate\Validation\Rule;
+class UpdateProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:projects|max:45',
+            'name' => ['required', 'max:45',Rule::unique('projects')->ignore($this->project)],
             'description' => 'nullable',
             'dev_lang' => 'required',
             'framework' => 'nullable',
