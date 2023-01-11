@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -40,6 +41,10 @@ class ProjectController extends Controller
         $data = $request->validated();
         $slug = Project::generateSlug($request->name);
         $data['slug'] = $slug;
+        if($request->hasFile('image')){
+            $path = Storage::disk('public')->put('project_images', $request->image);
+            $data['image'] = $path;
+        }
         Project::create($data);
         return redirect()->route('admin.projects.show', $slug);
     }
@@ -75,6 +80,13 @@ class ProjectController extends Controller
         $data = $request->validated();
         $slug = Project::generateSlug($request->name);
         $data['slug'] = $slug;
+        if($request->hasFile('image')){
+            if ($project->image) {
+                Storage::delete($project->image);
+            }
+            $path = Storage::disk('public')->put('project_images', $request->image);
+            $data['image'] = $path;
+        }
         $project->update($data);
         return redirect()->route('admin.projects.index')->with('message', "$project->name updated successfully");
     }

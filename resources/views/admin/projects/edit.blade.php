@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <section class="my-5">
-        <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" class="my-form">
+        <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST" class="my-form" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -66,6 +66,13 @@
                 {{-- <input type="number" step="1" class="form-control @error('diff_lvl') is-invalid @enderror" name="diff_lvl" id="diff_lvl" min="0" max="10"> --}}
                 @error('diff_lvl')
                     <div class="invalid-feedback">{{$message}}</div>
+                @enderror
+            </div>
+            <div>
+                <label for="image" class="form-label">Immagine</label>
+                <input type="file" name="image" id="image" class="form-control  @error('image') is-invalid @enderror" >
+                @error('image')
+                <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             

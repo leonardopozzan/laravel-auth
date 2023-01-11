@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <section class="my-5">
-        <form action="{{ route('admin.projects.store') }}" method="POST" class="my-form">
+        <form action="{{ route('admin.projects.store') }}" method="POST" class="my-form" enctype="multipart/form-data">
         @csrf
             <h1 class="text-center fs-1">Aggiungi un Progetto</h1>
             <div>
@@ -66,7 +66,13 @@
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div>
-            
+            <div>
+                <label for="image" class="form-label">Immagine</label>
+                <input type="file" name="image" id="image" class="form-control  @error('image') is-invalid @enderror" >
+                @error('image')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
             <div class="d-flex">
                 <button type="submit" class="my-btn rounded-pill" id="btn-submit">Invia</button>
                 <button type="reset" class="my-btn  rounded-pill" id="btn-reset">Resetta</button>
