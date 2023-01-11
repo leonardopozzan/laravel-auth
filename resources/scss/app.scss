@@ -1,3 +1,4 @@
+@use './variables' as *;
 @import '~bootstrap/scss/bootstrap';
 *{
     margin: 0;
@@ -17,19 +18,41 @@ img{
 }
 #admin{
     .main-content{
+        padding-top: 30px;
         display: flex;
-        & > div:first-child{
-            width: 20%;
-        }
-        & > div:last-child{
+        .projects-list{
             width: 80%;
         }
         .side-bar{
+            width: 20%;
             background-color: black;
             padding: 1rem;
             a{
                 color: white;
             }
+        }
+        .my-form {
+            background-color: $warm-white;
+            color: $brown;
+            margin: 50px 0;
+            border-radius: 3rem;
+            padding: 3rem 10rem;
+            input, select{
+                border-radius: 5px;
+                outline: none;
+            }
+        
+            h1 {
+                color: $gold;
+            }
+        
+            * {
+                font-size: 1.2rem;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        
+            
         }
     }
 }
