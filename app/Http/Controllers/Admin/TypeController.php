@@ -38,7 +38,7 @@ class TypeController extends Controller
      * @param  \App\Http\Requests\StoreTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProjectRequest $request)
+    public function store(StoreTypeRequest $request)
     {
         $data = $request->validated();
         $slug = Type::generateSlug($request->workflow);
