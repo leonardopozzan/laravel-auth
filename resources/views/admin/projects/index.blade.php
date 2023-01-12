@@ -1,8 +1,11 @@
+<?php 
+use App\Models\Type;
+?>
 @extends('layouts.admin')
 @section('content')
 
     <div class="projects-list">
-        @if(session()->has('message'))
+    @if(session()->has('message'))
     <div class="alert alert-success mb-3 mt-3">
         {{ session()->get('message') }}
     </div>
@@ -13,7 +16,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Difficulty</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -24,7 +27,7 @@
                         <th scope="row">{{$project->id}}</th>
                         <td><a href="{{route('admin.projects.show', $project->slug)}}" title="View project">{{$project->name}}</a></td>
                         <td>{{Str::limit($project->description,50)}}</td>
-                        <td>{{$project->diff_lvl}}</td>
+                        <td>{{Type::findType($project->type_id)}}</td>
                         <td><a class="link-secondary" href="{{route('admin.projects.edit', $project->slug)}}" title="Edit project"><i class="fa-solid fa-pen"></i></a></td>
                         <td>
                             <form action="{{route('admin.projects.destroy', $project->slug)}}" method="post">

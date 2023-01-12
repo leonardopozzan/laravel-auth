@@ -25,7 +25,7 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:45',Rule::unique('projects')->ignore($this->project)],
-            'type_id' => 'required|exists:types,id',
+            'type_id' => 'exists:types,id|nullable',
             'description' => 'nullable',
             'dev_lang' => 'required',
             'framework' => 'nullable',
@@ -38,7 +38,6 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name.required' => 'il nome è obbligatorio',
-            'type_id.required' => 'il tipo è obbligatorio',
             'type_id.exists' => 'il tipo non esiste',
             'name.unique' => 'il nome è già presente',
             'name.max' => 'il nome deve avere meno di :max caratteri',
