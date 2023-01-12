@@ -1,8 +1,7 @@
 <div class="side-bar">
     <ul>
-        <li><a href="{{route('admin.projects.index')}}">Tutti i progetti</a></li>
-        <li><a href="{{route('admin.projects.create')}}">Aggiungi un progetto</a></li>
-        <li><a href="{{route('admin.types.index')}}">Tutti i tipi</a></li>
-        <li><a href="{{route('admin.types.create')}}">Aggiungi un tipo</a></li>
+        <li class="title"><i class="fa-solid fa-chart-line"></i>Dashboard</li>
+        <li><a href="{{route('admin.projects.index')}}"><i class="fa-solid fa-diagram-project"></i>Tutti i Progetti</a></li>
+        <li><a href="{{route('admin.types.index')}}"><i class="fa-solid fa-atom"></i>Tutti i Tipi</a></li>
     </ul>
 </div>

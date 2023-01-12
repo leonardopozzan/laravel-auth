@@ -32,6 +32,7 @@ class StoreProjectRequest extends FormRequest
             'team' => 'nullable',
             'git_link' => 'nullable',
             'diff_lvl' => 'nullable|min:0|max:10',
+            'image' => 'nullable|max:1000',
         ];
     }
     public function messages()
@@ -44,6 +45,7 @@ class StoreProjectRequest extends FormRequest
             'dev_lang.required' => 'il linguaggio è obbligatorio',
             'diff_lvl.min' => 'il livello di difficoltà non può essere inferiore a :min',
             'diff_lvl.max' => 'il livello di difficoltà non può essere superiore a :max',
+            'image.max' => 'l\'immagine è troppo grande',
         ];
     }
 }
