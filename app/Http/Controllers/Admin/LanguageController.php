@@ -16,7 +16,8 @@ class LanguageController extends Controller
      */
     public function index()
     {
-        //
+        $languages = Language::all();
+        return view('admin.languages.index', compact('languages'));
     }
 
     /**
@@ -37,7 +38,11 @@ class LanguageController extends Controller
      */
     public function store(StoreLanguageRequest $request)
     {
-        //
+        $data = $request->validated();
+        $slug = Language::generateSlug($request->name);
+        $data['slug'] = $slug;
+        Language::create($data);
+        return redirect()->back()->with('message', "Language $slug added successfully");
     }
 
     /**
@@ -82,6 +87,8 @@ class LanguageController extends Controller
      */
     public function destroy(Language $language)
     {
-        //
+        $language->delete();
+
+        return redirect()->back()->with('message', "language $language->name removed successfully");
     }
 }

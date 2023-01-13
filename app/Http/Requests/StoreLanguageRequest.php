@@ -24,7 +24,13 @@ class StoreLanguageRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'name' => 'required'
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'il nome è obbligatorio'
         ];
     }
 }
