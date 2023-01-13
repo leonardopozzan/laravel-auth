@@ -76,7 +76,11 @@ class LanguageController extends Controller
      */
     public function update(UpdateLanguageRequest $request, Language $language)
     {
-        //
+        $data = $request->validated();
+        $slug = Language::generateSlug($request->name);
+        $data['slug'] = $slug;
+        $language->update($data);
+        return redirect()->back()->with('message', "Language $slug updates successfully");
     }
 
     /**

@@ -24,13 +24,15 @@ class StoreLanguageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required|unique:languages|max:45'
         ];
     }
     public function messages()
     {
         return [
-            'name.required' => 'il nome è obbligatorio'
+            'name.required' => 'il nome è obbligatorio',
+            'name.unique' => 'il nome esiste già',
+            'name.max' => 'il nome non può superare i :max caratteri',
         ];
     }
 }
