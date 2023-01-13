@@ -18,15 +18,15 @@ class Type extends Model
         return Str::slug($name, '-');
     }
 
-    public function projects(): HasMany{
+    public function projects() :HasMany{
         return $this->hasMany(Project::class);
     }
-    public static function findType($id){
-        $type = Type::select('workflow')->where('id', $id)->get();
-        if(count($type)){
-            return $type['0']->workflow;
-        }else{
-            return '/';
-        }
-    }
+    // public static function findType($id){
+    //     $type = Type::select('workflow')->where('id', $id)->get();
+    //     if(count($type)){
+    //         return $type['0']->workflow;
+    //     }else{
+    //         return '/';
+    //     }
+    // }
 }

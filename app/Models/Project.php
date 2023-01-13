@@ -16,7 +16,7 @@ class Project extends Model
     public static function generateSlug($name){
         return Str::slug($name, '-');
     }
-    public function type(): BelongsTo{
-        return $this->belongTo(Type::class);
+    public function type() :BelongsTo{
+        return $this->belongsTo(Type::class);
     }
 }

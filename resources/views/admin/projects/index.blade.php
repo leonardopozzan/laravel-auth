@@ -29,7 +29,11 @@ use App\Models\Type;
                             <th scope="row">{{$project->id}}</th>
                             <td><a href="{{route('admin.projects.show', $project->slug)}}" title="View project">{{$project->name}}</a></td>
                             <td>{{Str::limit($project->description,50)}}</td>
-                            <td>{{Type::findType($project->type_id)}}</td>
+                            @if ($project->type)
+                                <td>{{$project->type->workflow}}</td>
+                            @else
+                                <td>/</td>
+                            @endif
                             <td><a class="link-secondary" href="{{route('admin.projects.edit', $project->slug)}}" title="Edit project"><i class="fa-solid fa-pen"></i></a></td>
                             <td>
                                 <form action="{{route('admin.projects.destroy', $project->slug)}}" method="post">
