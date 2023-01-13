@@ -32,7 +32,7 @@ class UpdateProjectRequest extends FormRequest
             'team' => 'nullable',
             'git_link' => 'nullable',
             'diff_lvl' => 'nullable|min:0|max:10',
-            'image' => 'nullable|max:1000',
+            'image' => 'nullable|max:5000',
         ];
     }
     public function messages()

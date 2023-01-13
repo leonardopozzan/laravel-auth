@@ -45,11 +45,14 @@ img{
     }
     main{
         .projects-list{
-            
-            table {
+            margin-top: 50px;
+            .table-container{
                 width: 90%;
+                margin: auto;
+            }
+            table {
+                width: 100%;
                 border-collapse: collapse;
-                margin: 100px auto;
                 font-size: 0.9em;
                 font-family: sans-serif;
                 min-width: 400px;
@@ -79,27 +82,33 @@ img{
             }
         }
         .my-form {
-            background-color: $warm-white;
-            color: $brown;
-            margin: 50px 0;
+            width: 70%;
+            margin: auto;
+            background-color: $light-grey;
             border-radius: 3rem;
-            padding: 3rem 10rem;
+            padding: 3rem 8rem;
             input, select{
                 border-radius: 5px;
                 outline: none;
             }
-        
-            h1 {
-                color: $gold;
-            }
-        
-            * {
-                font-size: 1.2rem;
+            & > * {
+                font-size: 1.1rem;
                 width: 100%;
                 margin-bottom: 5px;
             }
-        
-            
+            button{
+                font-size: 1.2rem;            
+            }
+        }
+        .container-card{
+            width: 80%;
+            margin: 50px auto;
+            .my-card{
+
+                .img-box{
+                    width: 75%;
+                }
+            }
         }
     }
 }

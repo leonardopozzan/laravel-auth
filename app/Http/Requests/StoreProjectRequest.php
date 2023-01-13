@@ -25,14 +25,14 @@ class StoreProjectRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:projects|max:45',
-            'type_id' => 'nullable|eexists:types,id',
+            'type_id' => 'nullable|exists:types,id',
             'description' => 'nullable',
             'dev_lang' => 'required',
             'framework' => 'nullable',
             'team' => 'nullable',
             'git_link' => 'nullable',
             'diff_lvl' => 'nullable|min:0|max:10',
-            'image' => 'nullable|max:1000',
+            'image' => 'nullable|max:5000',
         ];
     }
     public function messages()

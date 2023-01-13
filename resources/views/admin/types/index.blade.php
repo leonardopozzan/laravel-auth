@@ -2,13 +2,15 @@
 @section('content')
 
     <div class="projects-list">
-        @if(session()->has('message'))
-            <div class="alert alert-success mb-3 mt-3">
-                {{ session()->get('message') }}
-            </div>
-        @endif
         
         <div class="table-container">
+            @if(session()->has('message'))
+            <div class="alert alert-success mb-3 mt-3 w-75 m-auto">
+                {{ session()->get('message') }}
+            </div>
+            @endif
+            <a href="{{route('admin.types.create')}}" class="text-white"><button class="btn btn-primary mb-2"><i class="fa-solid fa-plus"></i></button></a>
+            
             <table>
                 <thead>
                     <tr>

@@ -5,7 +5,7 @@
         @csrf
         @method('PUT')
 
-            <h1 class="text-center fs-1">Modifica un Tipo</h1>
+            <h1 class="text-center fs-2 mb-3">Modifica un Tipo</h1>
             <div>
                 <label for="workflow">Nome</label>
                 <input type="text" class="form-control @error('workflow') is-invalid @enderror" name="workflow" id="workflow" required maxlength="45" value="{{old('workflow',$type->workflow)}}">
@@ -15,9 +15,9 @@
             </div>
             
             
-            <div class="d-flex">
-                <button type="submit" class="my-btn rounded-pill" id="btn-submit">Invia</button>
-                <button type="reset" class="my-btn  rounded-pill" id="btn-reset">Resetta</button>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary" id="btn-submit">Invia</button>
+                <button type="reset" class="btn btn-danger" id="btn-reset">Resetta</button>
             </div>
 
         </form>

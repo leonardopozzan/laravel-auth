@@ -1,11 +1,9 @@
 @extends('layouts.admin')
 @section('content')
-<div class="container mt-5">
-    <div class="col-4">
-        <div>
-            <div>{{$type->id}}</div>
-            <div>{{$type->workflow}}</div>
-        </div>
+<div class="container-card">
+    <div class="my-card">
+        <div>Id : {{$type->id}}</div>
+        <div>Tipo : {{$type->workflow}}</div>
     </div>
 </div>
 @endsection
