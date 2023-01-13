@@ -15,7 +15,11 @@ use App\Models\Type;
                 @endif
             </div>
             <div>Nome: {{$project->name}}</div>
-            <div>Tipo: {{Type::findType($project->type_id)}}</div>
+            @if ($project->type)
+                                <td>{{$project->type->workflow}}</td>
+                            @else
+                                <td>/</td>
+                            @endif
             <div>Difficoltà: {{$project->diff_lvl}}</div>
             <div>Framework: {{$project->framework}}</div>
             <div>Team: {{$project->team}}</div>

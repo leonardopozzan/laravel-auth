@@ -1,6 +1,3 @@
-<?php 
-use App\Models\Type;
-?>
 @extends('layouts.admin')
 @section('content')
 

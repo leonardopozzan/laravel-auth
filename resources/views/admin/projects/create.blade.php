@@ -71,6 +71,16 @@
                 @enderror
             </div>
             <div>
+                <label for="languages">Linguaggi</label> <br>
+                @foreach ($languages as $language)
+                    <input type="checkbox" name="languages[]" value="{{$language->id}}">
+                    <span class="text-capitalize">{{$language->name}}</span>
+                @endforeach
+                {{-- @error('languages')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror --}}
+            </div>
+            <div>
                 <label for="image" class="form-label">Immagine</label>
                 <input type="file" name="image" id="image" class="form-control  @error('image') is-invalid @enderror" >
                 @error('image')

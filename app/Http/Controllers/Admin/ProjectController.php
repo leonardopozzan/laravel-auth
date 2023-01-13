@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Language;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Type;
@@ -29,8 +30,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        $languages = Language::all();
         $types = Type::all();
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('types','languages'));
     }
 
     /**
@@ -47,7 +49,11 @@ class ProjectController extends Controller
             $path = Storage::disk('public')->put('project_images', $request->image);
             $data['image'] = $path;
         }
-        Project::create($data);
+        $new_project = Project::create($data);
+
+        if($request->has('languages')){
+            $new_project->languages()->attach($request->languages);
+        }
         return redirect()->route('admin.projects.show', $slug);
     }
 
@@ -69,7 +75,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project','types'));
+        $languages = Language::all();
+        return view('admin.projects.edit', compact('project','types','languages'));
     }
 
     /**
