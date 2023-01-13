@@ -19,7 +19,7 @@
 </head>
 
 <body id="admin">
-    <div class="d-flex align-items-start">
+    <div class="d-flex">
         @include('partials.admin.sidebar')
         <main class="w-100">
             @include('partials.admin.header')

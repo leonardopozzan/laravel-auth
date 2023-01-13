@@ -20,7 +20,7 @@ img{
     .side-bar{
         width: 25%;
         min-width: 250px;
-        height: 100vh;
+        min-height: 100vh;
         background-color: $dark-blue;
         padding: 1rem;
         ul{
@@ -45,7 +45,38 @@ img{
     }
     main{
         .projects-list{
-            width: 80%;
+            
+            table {
+                width: 90%;
+                border-collapse: collapse;
+                margin: 100px auto;
+                font-size: 0.9em;
+                font-family: sans-serif;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                thead tr {
+                    background-color: $light-blue;
+                    color: $white;
+                    text-align: left;
+                }
+                th,td {
+                    padding: 12px 15px;
+                }
+                tbody tr {
+                    border-bottom: 1px solid $border-grey;
+                }
+                tbody tr:nth-of-type(even) {
+                    background-color: $light-grey;
+
+                }
+                tbody tr:last-of-type {
+                    border-bottom: 2px solid $light-blue;
+                }
+                tbody tr.active-row {
+                    font-weight: bold;
+                    color: $light-blue;
+                }
+            }
         }
         .my-form {
             background-color: $warm-white;

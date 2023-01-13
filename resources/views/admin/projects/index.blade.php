@@ -10,7 +10,7 @@ use App\Models\Type;
         {{ session()->get('message') }}
     </div>
     @endif
-        <table class="w-100">
+        <table>
             <thead>
                 <tr>
                     <th scope="col">#</th>
