@@ -17,7 +17,6 @@ use App\Models\Type;
             <div>Nome: {{$project->name}}</div>
             <div>Tipo: {{Type::findType($project->type_id)}}</div>
             <div>Difficoltà: {{$project->diff_lvl}}</div>
-            <div>Linguaggi: {{$project->dev_lang}}</div>
             <div>Framework: {{$project->framework}}</div>
             <div>Team: {{$project->team}}</div>
             <div>Git link: {{$project->git_link}}</div>
