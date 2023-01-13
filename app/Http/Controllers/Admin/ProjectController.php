@@ -97,6 +97,7 @@ class ProjectController extends Controller
             $path = Storage::disk('public')->put('project_images', $request->image);
             $data['image'] = $path;
         }
+        $project->languages()->sync($request->languages);
         $project->update($data);
         return redirect()->route('admin.projects.index')->with('message', "$project->name updated successfully");
     }

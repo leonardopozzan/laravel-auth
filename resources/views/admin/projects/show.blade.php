@@ -16,10 +16,15 @@ use App\Models\Type;
             </div>
             <div>Nome: {{$project->name}}</div>
             @if ($project->type)
-                                <td>{{$project->type->workflow}}</td>
-                            @else
-                                <td>/</td>
-                            @endif
+                <div>{{$project->type->workflow}}</div>
+            @else
+                <div>/</div>
+            @endif
+            @if (count($project->languages))
+                @foreach ($project->languages as $language)
+                <div>{{$language->name}}</div>
+                @endforeach
+            @endif
             <div>Difficoltà: {{$project->diff_lvl}}</div>
             <div>Framework: {{$project->framework}}</div>
             <div>Team: {{$project->team}}</div>
